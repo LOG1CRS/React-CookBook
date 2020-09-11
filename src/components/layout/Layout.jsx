@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, Hidden, Container } from '@material-ui/core';
+import { makeStyles, Hidden } from '@material-ui/core';
 import Navbar from './Navbar';
 import DrawerItem from './DrawerItem';
 import Footer from './Footer';
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       </Hidden>
       <div className={classes.content}>
         <div className={classes.toolbar} />
-        <Container fixed>{children}</Container>
+        <div>{children}</div>
       </div>
       <Footer />
     </>
