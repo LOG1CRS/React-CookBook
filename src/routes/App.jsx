@@ -6,7 +6,7 @@ import theme from '../assets/style/themeConfig';
 import Layout from '../components/layout/Layout';
 import { home, search, categories } from './routes.json';
 
-import LandingPage from '../views/LandingPage';
+import Main from '../views/Main';
 import SearchPage from '../views/SearchPage';
 import CategoriesPage from '../views/CategoriesPage';
 
@@ -16,7 +16,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Layout>
           <Switch>
-            <Route exact path={home} component={LandingPage} />
+            <Route exact path={home} component={Main} />
             <Route exact path={search} component={SearchPage} />
             <Route exact path={categories} component={CategoriesPage} />
           </Switch>
