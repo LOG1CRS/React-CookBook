@@ -3,6 +3,7 @@ import { makeStyles, Hidden } from '@material-ui/core';
 import Navbar from './Navbar';
 import DrawerItem from './DrawerItem';
 import Footer from './Footer';
+import BackToTop from './BackToTop';
 
 const useStyle = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
@@ -28,9 +29,10 @@ const Layout = ({ children }) => {
         <DrawerItem variant="temporary" open={open} onClose={toggleOpen} />
       </Hidden>
       <div className={classes.content}>
-        <div className={classes.toolbar} />
+        <div id="top" />
         <div>{children}</div>
       </div>
+      <BackToTop />
       <Footer />
     </>
   );

@@ -13,12 +13,14 @@ import desktopImg from '../../assets/static/hero-desktop.jpg';
 const useStyle = makeStyles((theme) => ({
   hero: {
     width: '100%',
-    height: `calc(100vh - 63px)`,
+    // height: `calc(100vh - 63px)`,
+    height: '100vh',
     backgroundPosition: 'center',
     backgroundImage: `url(${desktopImg})`,
     backgroundSize: 'cover',
     [theme.breakpoints.only('xs')]: {
-      height: 'calc(100vh - 55px)',
+      // height: 'calc(100vh - 55px)',
+      height: '100vh',
     },
     [theme.breakpoints.down('md')]: {
       backgroundImage: `url(${mobileImg})`,
@@ -61,7 +63,8 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best recipes website <br /> made with React ♥
+              The best recipes website <br /> made with <strong>React</strong>{' '}
+              💙
             </Typography>
           </Hidden>
           <Hidden lgUp xsDown>
@@ -71,7 +74,8 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best recipes <br /> website made with <br /> React ♥
+              The best recipes <br /> website made with <br />
+              <strong>React</strong> 💙
             </Typography>
           </Hidden>
           <Hidden smUp>
@@ -81,7 +85,8 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best <br /> recipes website <br /> made with <br /> React ♥
+              The best <br /> recipes website <br /> made with <br />
+              <strong>React</strong> 💙
             </Typography>
           </Hidden>
         </Container>
