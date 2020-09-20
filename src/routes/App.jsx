@@ -9,11 +9,13 @@ import { home, search, categories } from './routes.json';
 import Main from '../views/Main';
 import SearchPage from '../views/SearchPage';
 import CategoriesPage from '../views/CategoriesPage';
+import RouterScrollToTop from '../utils/RouterScrollToTop';
 
 const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        <RouterScrollToTop />
         <Layout>
           <Switch>
             <Route exact path={home} component={Main} />

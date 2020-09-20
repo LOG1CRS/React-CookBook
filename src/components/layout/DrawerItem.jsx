@@ -108,10 +108,14 @@ const DrawerItem = (props) => {
         justify="center"
         className={classes.drawerImgContainer}
       >
-        <Link to={home}>
+        <Link to={home} onClick={props.onClose ? props.onClose : null}>
           <img src={drawerImg} alt="Logo" className={classes.drawerImg} />
         </Link>
-        <Link to={home} className={classes.link}>
+        <Link
+          to={home}
+          className={classes.link}
+          onClick={props.onClose ? props.onClose : null}
+        >
           <Typography
             variant="h1"
             color="primary"
@@ -129,6 +133,7 @@ const DrawerItem = (props) => {
             className={classes.itemSpace}
             component={Link}
             to={search}
+            onClick={props.onClose ? props.onClose : null}
           >
             <ListItemIcon>
               <Search />
@@ -140,6 +145,7 @@ const DrawerItem = (props) => {
             className={classes.itemSpace}
             component={Link}
             to={categories}
+            onClick={props.onClose ? props.onClose : null}
           >
             <ListItemIcon>
               <AllInbox />
@@ -151,6 +157,7 @@ const DrawerItem = (props) => {
             target="_blank"
             rel="noopener noreferrer"
             className={classes.link}
+            onClick={props.onClose ? props.onClose : null}
           >
             <ListItem button className={classes.itemSpace}>
               <ListItemIcon>

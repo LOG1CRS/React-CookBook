@@ -1,16 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
-
-const useStyle = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
-}));
+import React, { useState } from 'react';
+import HeroSearch from '../components/search/HeroSearch';
+import SearchResults from '../components/search/SearchResults';
 
 const SearchPage = () => {
-  const classes = useStyle();
+  const [resultsView, setResultsView] = useState(false);
+
   return (
     <>
-      <div className={classes.toolbar} />
-      <p>SearchPage</p>
+      <HeroSearch handleResults={setResultsView} valueResults={resultsView} />
+      {resultsView ? <SearchResults /> : null}
     </>
   );
 };

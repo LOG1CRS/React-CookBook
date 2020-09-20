@@ -7,23 +7,19 @@ import {
   Hidden,
 } from '@material-ui/core';
 
-import mobileImg from '../../assets/static/hero-mobile.jpg';
-import desktopImg from '../../assets/static/hero-desktop.jpg';
+import mainWallMobile from '../../assets/static/hero-mobile.jpg';
+import mainWallDesktop from '../../assets/static/hero-desktop.jpg';
 
 const useStyle = makeStyles((theme) => ({
   hero: {
     width: '100%',
-    // height: `calc(100vh - 63px)`,
+    minHeight: '650px',
     height: '100vh',
     backgroundPosition: 'center',
-    backgroundImage: `url(${desktopImg})`,
+    backgroundImage: `url(${mainWallDesktop})`,
     backgroundSize: 'cover',
-    [theme.breakpoints.only('xs')]: {
-      // height: 'calc(100vh - 55px)',
-      height: '100vh',
-    },
     [theme.breakpoints.down('md')]: {
-      backgroundImage: `url(${mobileImg})`,
+      backgroundImage: `url(${mainWallMobile})`,
     },
   },
   heroTitle: {
@@ -45,7 +41,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const Hero = () => {
+const HeroMain = () => {
   const classes = useStyle();
   return (
     <>
@@ -63,8 +59,7 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best recipes website <br /> made with <strong>React</strong>{' '}
-              💙
+              The best recipes website <br /> made with React 💙
             </Typography>
           </Hidden>
           <Hidden lgUp xsDown>
@@ -74,8 +69,7 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best recipes <br /> website made with <br />
-              <strong>React</strong> 💙
+              The best recipes <br /> website made with <br /> React 💙
             </Typography>
           </Hidden>
           <Hidden smUp>
@@ -85,8 +79,7 @@ const Hero = () => {
               align="center"
               className={classes.heroTitle}
             >
-              The best <br /> recipes website <br /> made with <br />
-              <strong>React</strong> 💙
+              The best <br /> recipes website <br /> made with <br /> React 💙
             </Typography>
           </Hidden>
         </Container>
@@ -95,4 +88,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroMain;
