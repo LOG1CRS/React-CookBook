@@ -1,16 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-
-const useStyle = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
-}));
+import HeroCategories from '../components/categories/HeroCategories';
+import CategoriesList from '../components/categories/CategoriesList';
 
 const CategoriesPage = () => {
-  const classes = useStyle();
   return (
     <>
-      <div className={classes.toolbar} />
-      <p>Categories Page</p>
+      <HeroCategories />
+      <CategoriesList />
     </>
   );
 };

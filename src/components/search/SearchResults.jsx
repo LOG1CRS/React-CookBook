@@ -4,6 +4,7 @@ import ScrollToResults from '../../utils/ScrollToResults';
 
 const useStyle = makeStyles((theme) => ({
   root: {
+    backgroundColor: theme.palette.background.default,
     width: '100%',
     height: '100vh',
   },

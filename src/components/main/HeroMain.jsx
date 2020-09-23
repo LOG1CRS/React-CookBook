@@ -5,6 +5,7 @@ import {
   makeStyles,
   Container,
   Hidden,
+  Button,
 } from '@material-ui/core';
 
 import mainWallMobile from '../../assets/static/hero-mobile.jpg';
@@ -38,6 +39,12 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.only('xs')]: {
       fontSize: 47,
     },
+  },
+  mainHeroButton: {
+    marginTop: 40,
+  },
+  link: {
+    textDecoration: 'none',
   },
 }));
 
@@ -82,6 +89,18 @@ const HeroMain = () => {
               The best <br /> recipes website <br /> made with <br /> React 💙
             </Typography>
           </Hidden>
+          <Grid
+            container
+            alignContent="center"
+            justify="center"
+            className={classes.mainHeroButton}
+          >
+            <a href="#main-list" className={classes.link}>
+              <Button variant="contained" color="primary" size="large">
+                Learn More!
+              </Button>
+            </a>
+          </Grid>
         </Container>
       </Grid>
     </>
