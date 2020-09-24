@@ -2,6 +2,7 @@
   "name": "react-cookbook",
   "version": "0.1.0",
   "private": true,
+  "author": "LOG1CRS",
   "engines": {
     "node": "14.0.0",
     "npm": "6.14.8"
