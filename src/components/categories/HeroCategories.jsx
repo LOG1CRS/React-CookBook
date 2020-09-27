@@ -7,7 +7,7 @@ import {
   Button,
 } from '@material-ui/core';
 
-import ScrollToResults from '../../utils/scrollToResults';
+import ScrollToResults from '../../utils/ScrollToResults';
 import { categoriesId } from '../../utils/scrollRefs.json';
 import categoriesWallDesktop from '../../assets/static/categories-desktop.jpg';
 import categoriesWallMobile from '../../assets/static/categories-mobile.jpg';

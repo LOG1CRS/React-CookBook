@@ -3,7 +3,7 @@ import { Grid, Container, makeStyles, Typography } from '@material-ui/core';
 
 import { categoriesResultsId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
-import ScrollToResults from '../../utils/scrollToResults';
+import ScrollToResults from '../../utils/ScrollToResults';
 
 const useStyle = makeStyles((theme) => ({
   results: {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Grid, makeStyles, Container, Typography } from '@material-ui/core';
-import ScrollToResults from '../../utils/scrollToResults';
+import ScrollToResults from '../../utils/ScrollToResults';
 import { searchId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
 

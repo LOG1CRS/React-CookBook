@@ -9,7 +9,7 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import ScrollToResults from '../../utils/scrollToResults';
+import ScrollToResults from '../../utils/ScrollToResults';
 
 import { searchId } from '../../utils/scrollRefs.json';
 import searchWallDesktop from '../../assets/static/search-desktop.jpg';

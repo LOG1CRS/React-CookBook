@@ -8,7 +8,7 @@ import {
   Button,
 } from '@material-ui/core';
 
-import ScrollToResults from '../../utils/scrollToResults';
+import ScrollToResults from '../../utils/ScrollToResults';
 import { mainId } from '../../utils/scrollRefs.json';
 import mainWallMobile from '../../assets/static/hero-mobile.jpg';
 import mainWallDesktop from '../../assets/static/hero-desktop.jpg';
