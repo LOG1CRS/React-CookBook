@@ -41,7 +41,8 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const CategoriesList = () => {
+const CategoriesList = (props) => {
+  const { setResults, setFoodType } = props;
   const classes = useStyle();
   return (
     <Container className={classes.categoriesList} id="categories-list">
@@ -58,7 +59,11 @@ const CategoriesList = () => {
               alignContent="center"
               className={classes.categoriesButton}
             >
-              <CategoriesButton {...item} />
+              <CategoriesButton
+                {...item}
+                setResults={setResults}
+                setFoodType={setFoodType}
+              />
             </Grid>
           </Grid>
         ))}

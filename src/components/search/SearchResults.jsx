@@ -12,13 +12,14 @@ const useStyle = makeStyles((theme) => ({
 
 const SearchResults = () => {
   const classes = useStyle();
+  const searchId = 'search-results';
 
   useEffect(() => {
-    ScrollToResults();
+    ScrollToResults(searchId);
   }, []);
 
   return (
-    <Grid container className={classes.root} id="results-view">
+    <Grid container className={classes.root} id={searchId}>
       <br />
     </Grid>
   );

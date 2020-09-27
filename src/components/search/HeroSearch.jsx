@@ -99,6 +99,7 @@ const HeroSearch = (props) => {
 
   const { handleResults, valueResults } = props;
   const classes = useStyle();
+  const searchId = 'search-results';
 
   const handleErrorMessage = () => {
     setErrorMessage(!errorMessage);
@@ -110,7 +111,7 @@ const HeroSearch = (props) => {
 
   const handleScroll = () => {
     if (valueResults) {
-      ScrollToTop();
+      ScrollToTop(searchId);
     } else {
       handleResults(true);
     }

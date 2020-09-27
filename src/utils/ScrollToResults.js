@@ -1,5 +1,5 @@
-const ScrollToResults = () => {
-  const resultsView = document.querySelector('#results-view');
+const ScrollToResults = (objectId) => {
+  const resultsView = document.querySelector(`#${objectId}`);
 
   if (resultsView) {
     resultsView.scrollIntoView({ behavior: 'smooth', block: 'center' });

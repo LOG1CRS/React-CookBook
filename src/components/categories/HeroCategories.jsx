@@ -47,8 +47,9 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const HeroCategories = () => {
+const HeroCategories = (props) => {
   const classes = useStyle();
+  const { setResults } = props;
   return (
     <Grid
       container
@@ -72,7 +73,12 @@ const HeroCategories = () => {
           className={classes.categoriesHeroButton}
         >
           <a href="#categories-list" className={classes.link}>
-            <Button variant="contained" color="primary" size="large">
+            <Button
+              onClick={() => setResults(false)}
+              variant="contained"
+              color="primary"
+              size="large"
+            >
               Categories
             </Button>
           </a>
