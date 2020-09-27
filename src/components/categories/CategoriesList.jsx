@@ -3,6 +3,8 @@ import { makeStyles, Grid, Container } from '@material-ui/core';
 import CategoriesButton from './CategoriesButton';
 import categories from './categories';
 
+import { categoriesId } from '../../utils/scrollRefs.json';
+
 const useStyle = makeStyles((theme) => ({
   categoriesList: {
     width: '100%',
@@ -45,7 +47,7 @@ const CategoriesList = (props) => {
   const { setResults, setFoodType } = props;
   const classes = useStyle();
   return (
-    <Container className={classes.categoriesList} id="categories-list">
+    <Container className={classes.categoriesList} id={categoriesId}>
       <Grid
         container
         className={classes.categoriesContainer}

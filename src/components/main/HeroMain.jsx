@@ -8,6 +8,8 @@ import {
   Button,
 } from '@material-ui/core';
 
+import ScrollToResults from '../../utils/scrollToResults';
+import { mainId } from '../../utils/scrollRefs.json';
 import mainWallMobile from '../../assets/static/hero-mobile.jpg';
 import mainWallDesktop from '../../assets/static/hero-desktop.jpg';
 
@@ -50,6 +52,11 @@ const useStyle = makeStyles((theme) => ({
 
 const HeroMain = () => {
   const classes = useStyle();
+
+  const handleClick = () => {
+    ScrollToResults(mainId);
+  };
+
   return (
     <>
       <Grid
@@ -95,11 +102,14 @@ const HeroMain = () => {
             justify="center"
             className={classes.mainHeroButton}
           >
-            <a href="#main-list" className={classes.link}>
-              <Button variant="contained" color="primary" size="large">
-                Learn More!
-              </Button>
-            </a>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={handleClick}
+            >
+              Learn More!
+            </Button>
           </Grid>
         </Container>
       </Grid>

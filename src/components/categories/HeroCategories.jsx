@@ -7,6 +7,8 @@ import {
   Button,
 } from '@material-ui/core';
 
+import ScrollToResults from '../../utils/scrollToResults';
+import { categoriesId } from '../../utils/scrollRefs.json';
 import categoriesWallDesktop from '../../assets/static/categories-desktop.jpg';
 import categoriesWallMobile from '../../assets/static/categories-mobile.jpg';
 
@@ -50,6 +52,11 @@ const useStyle = makeStyles((theme) => ({
 const HeroCategories = (props) => {
   const classes = useStyle();
   const { setResults } = props;
+
+  const handleClick = () => {
+    setResults(false);
+    ScrollToResults(categoriesId, 'nearest');
+  };
   return (
     <Grid
       container
@@ -72,16 +79,14 @@ const HeroCategories = (props) => {
           justify="center"
           className={classes.categoriesHeroButton}
         >
-          <a href="#categories-list" className={classes.link}>
-            <Button
-              onClick={() => setResults(false)}
-              variant="contained"
-              color="primary"
-              size="large"
-            >
-              Categories
-            </Button>
-          </a>
+          <Button
+            onClick={handleClick}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
+            Categories
+          </Button>
         </Grid>
       </Container>
     </Grid>

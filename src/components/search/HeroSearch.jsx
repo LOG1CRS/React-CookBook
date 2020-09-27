@@ -9,8 +9,9 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import ScrollToTop from '../../utils/ScrollToResults';
+import ScrollToResults from '../../utils/scrollToResults';
 
+import { searchId } from '../../utils/scrollRefs.json';
 import searchWallDesktop from '../../assets/static/search-desktop.jpg';
 import searchWallMobile from '../../assets/static/search-mobile.jpg';
 import SearchMessage from './SearchMessage';
@@ -94,12 +95,12 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const HeroSearch = (props) => {
+  const { handleResults, valueResults, setSearchValue } = props;
+
   const [errorMessage, setErrorMessage] = useState(false);
   const [warningMessage, setWarningMessage] = useState(false);
 
-  const { handleResults, valueResults } = props;
   const classes = useStyle();
-  const searchId = 'search-results';
 
   const handleErrorMessage = () => {
     setErrorMessage(!errorMessage);
@@ -111,7 +112,7 @@ const HeroSearch = (props) => {
 
   const handleScroll = () => {
     if (valueResults) {
-      ScrollToTop(searchId);
+      ScrollToResults(searchId);
     } else {
       handleResults(true);
     }
@@ -131,6 +132,7 @@ const HeroSearch = (props) => {
     e.preventDefault();
     const inputValue = inputValidation();
     if (inputValue) {
+      setSearchValue(inputValue);
       handleScroll();
     } else {
       setErrorMessage(true);

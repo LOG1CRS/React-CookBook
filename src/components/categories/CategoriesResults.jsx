@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { Grid, makeStyles, Container, Typography } from '@material-ui/core';
-import ScrollToResults from '../../utils/scrollToResults';
-import { searchId } from '../../utils/scrollRefs.json';
+import { Grid, Container, makeStyles, Typography } from '@material-ui/core';
+
+import { categoriesResultsId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
+import ScrollToResults from '../../utils/scrollToResults';
 
 const useStyle = makeStyles((theme) => ({
-  root: {
-    width: '100%',
+  results: {
     minHeight: '100vh',
+    width: '100%',
     [theme.breakpoints.only('xl')]: {
       marginTop: 50,
     },
@@ -30,21 +31,20 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const SearchResults = (props) => {
-  const { searchValue } = props;
-
+const CategoriesResults = (props) => {
+  const { foodType } = props;
   const classes = useStyle();
 
   useEffect(() => {
-    ScrollToResults(searchId);
+    ScrollToResults(categoriesResultsId);
   }, []);
 
   return (
-    <Container className={classes.root}>
+    <Container className={classes.results}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant="h2" color="initial" id={searchId}>
-            {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)} recipes
+          <Typography variant="h2" color="initial" id={categoriesResultsId}>
+            {foodType} recipes
           </Typography>
         </Grid>
         <CardSkeleton />
@@ -53,4 +53,4 @@ const SearchResults = (props) => {
   );
 };
 
-export default SearchResults;
+export default CategoriesResults;
