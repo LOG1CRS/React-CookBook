@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
       height: 320,
     },
 
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.only('xs')]: {
       height: 290,
     },
   },
@@ -69,11 +69,11 @@ const LoadingSkeletons = () => {
   }
 
   return (
-    <Grid container spacing={4}>
+    <>
       {skeletons.map((item, index) => (
         <React.Fragment key={index}>{item}</React.Fragment>
       ))}
-    </Grid>
+    </>
   );
 };
 

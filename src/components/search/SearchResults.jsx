@@ -8,24 +8,26 @@ const useStyle = makeStyles((theme) => ({
   root: {
     width: '100%',
     minHeight: '100vh',
+    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.only('xl')]: {
-      marginTop: 50,
+      paddingTop: 50,
+      paddingBottom: 30,
     },
     [theme.breakpoints.only('lg')]: {
-      marginTop: 40,
-      marginBottom: 60,
+      paddingTop: 40,
+      paddingBottom: 60,
     },
     [theme.breakpoints.only('md')]: {
-      marginTop: 80,
-      marginBottom: 80,
+      paddingTop: 80,
+      paddingBottom: 80,
     },
     [theme.breakpoints.only('sm')]: {
-      marginTop: 70,
-      marginBottom: 70,
+      paddingTop: 70,
+      paddingBottom: 70,
     },
     [theme.breakpoints.only('xs')]: {
-      marginTop: 55,
-      marginBottom: 55,
+      paddingTop: 55,
+      paddingBottom: 55,
     },
   },
 }));
@@ -40,16 +42,19 @@ const SearchResults = (props) => {
   }, []);
 
   return (
-    <Container className={classes.root}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="h2" color="initial" id={searchId}>
-            {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)} recipes
-          </Typography>
+    <Grid container className={classes.root}>
+      <Container>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="h2" color="initial" id={searchId}>
+              {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}{' '}
+              recipes
+            </Typography>
+          </Grid>
+          <CardSkeleton />
         </Grid>
-        <CardSkeleton />
-      </Grid>
-    </Container>
+      </Container>
+    </Grid>
   );
 };
 

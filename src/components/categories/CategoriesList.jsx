@@ -10,26 +10,27 @@ const useStyle = makeStyles((theme) => ({
     width: '100%',
     height: '100vh',
     minHeight: '750px',
+    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.only('xl')]: {
-      marginTop: 70,
-      marginBottom: 70,
+      paddingTop: 70,
+      paddingBottom: 70,
     },
     [theme.breakpoints.only('lg')]: {
-      marginTop: 60,
-      marginBottom: 60,
+      paddingTop: 60,
+      paddingBottom: 60,
     },
     [theme.breakpoints.only('md')]: {
-      marginTop: 80,
-      marginBottom: 80,
+      paddingTop: 80,
+      paddingBottom: 80,
     },
     [theme.breakpoints.only('sm')]: {
-      marginTop: 70,
-      marginBottom: 70,
+      paddingTop: 70,
+      paddingBottom: 70,
       height: 'auto',
     },
     [theme.breakpoints.only('xs')]: {
-      marginTop: 55,
-      marginBottom: 55,
+      paddingTop: 55,
+      paddingBottom: 55,
       height: 'auto',
     },
   },
@@ -47,30 +48,32 @@ const CategoriesList = (props) => {
   const { setResults, setFoodType } = props;
   const classes = useStyle();
   return (
-    <Container className={classes.categoriesList} id={categoriesId}>
-      <Grid
-        container
-        className={classes.categoriesContainer}
-        justify="space-evenly"
-      >
-        {categories.map((item, index) => (
-          <Grid key={index} item xs={12} sm={6} lg={3}>
-            <Grid
-              container
-              justify="center"
-              alignContent="center"
-              className={classes.categoriesButton}
-            >
-              <CategoriesButton
-                {...item}
-                setResults={setResults}
-                setFoodType={setFoodType}
-              />
+    <Grid container className={classes.categoriesList}>
+      <Container id={categoriesId}>
+        <Grid
+          container
+          className={classes.categoriesContainer}
+          justify="space-evenly"
+        >
+          {categories.map((item, index) => (
+            <Grid key={index} item xs={12} sm={6} lg={3}>
+              <Grid
+                container
+                justify="center"
+                alignContent="center"
+                className={classes.categoriesButton}
+              >
+                <CategoriesButton
+                  {...item}
+                  setResults={setResults}
+                  setFoodType={setFoodType}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+          ))}
+        </Grid>
+      </Container>
+    </Grid>
   );
 };
 
