@@ -51,7 +51,7 @@ const MainList = () => {
             <CardRecipe
               title={'Recipe test'}
               likes={900}
-              time={'20 min'}
+              time={20}
               img={testImg}
             />
           </Grid>

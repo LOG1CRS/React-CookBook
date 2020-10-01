@@ -117,7 +117,7 @@ const CardRecipe = (props) => {
               disabled
               startIcon={<AccessTime />}
             >
-              {time}
+              {time} min
             </Button>
           </CardActions>
         </CardActionArea>
