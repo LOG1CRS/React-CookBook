@@ -50,7 +50,9 @@ const CategoriesResults = (props) => {
               {foodType} recipes
             </Typography>
           </Grid>
-          <CardSkeleton />
+          <Grid container spacing={4}>
+            <CardSkeleton />
+          </Grid>
         </Grid>
       </Container>
     </Grid>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
+import useGetLikes from '../../hooks/useGetLikes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
 import CardRecipe from '../../utils/CardRecipe';
@@ -37,6 +38,14 @@ const useStyle = makeStyles((theme) => ({
 
 const MainList = () => {
   const classes = useStyle();
+  const [likesValues, lastMaxValue] = useGetLikes();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log(likesValues);
+    console.log(lastMaxValue);
+  }, []);
+
   return (
     <Grid container className={classes.categoriesList}>
       <Container>
@@ -47,13 +56,16 @@ const MainList = () => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            <CardSkeleton />
-            <CardRecipe
-              title={'Recipe test'}
-              likes={900}
-              time={20}
-              img={testImg}
-            />
+            {loading ? (
+              <CardSkeleton />
+            ) : (
+              <CardRecipe
+                title={'Recipe test'}
+                likes={900}
+                time={20}
+                img={testImg}
+              />
+            )}
           </Grid>
         </Grid>
       </Container>

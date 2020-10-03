@@ -10,6 +10,7 @@ import Main from '../views/Main';
 import SearchPage from '../views/SearchPage';
 import CategoriesPage from '../views/CategoriesPage';
 import RouterScrollToTop from '../utils/RouterScrollToTop';
+import NotFound from '../views/NotFound';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route exact path={home} component={Main} />
             <Route exact path={search} component={SearchPage} />
             <Route exact path={categories} component={CategoriesPage} />
+            <Route component={NotFound} />
           </Switch>
         </Layout>
       </ThemeProvider>

@@ -102,25 +102,25 @@ const CardRecipe = (props) => {
               </Typography>
             }
           />
-          <CardActions className={classes.cardContent}>
-            <Button
-              size="large"
-              variant="text"
-              disabled
-              startIcon={<FavoriteBorder />}
-            >
-              {likes}
-            </Button>
-            <Button
-              size="large"
-              variant="text"
-              disabled
-              startIcon={<AccessTime />}
-            >
-              {time} min
-            </Button>
-          </CardActions>
         </CardActionArea>
+        <CardActions className={classes.cardContent}>
+          <Button
+            size="large"
+            variant="text"
+            disabled
+            startIcon={<FavoriteBorder />}
+          >
+            {likes}
+          </Button>
+          <Button
+            size="large"
+            variant="text"
+            disabled
+            startIcon={<AccessTime />}
+          >
+            {time} min
+          </Button>
+        </CardActions>
       </Card>
     </Grid>
   );
