@@ -55,25 +55,33 @@ const useStyle = makeStyles((theme) => ({
   },
   cardTitle: {
     color: '#979797',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
     [theme.breakpoints.only('xs')]: {
+      width: 310,
       marginTop: 10,
-      fontSize: 27,
+      fontSize: 25,
     },
     [theme.breakpoints.only('sm')]: {
-      marginTop: 15,
-      fontSize: 30,
+      width: 310,
+      marginTop: 13,
+      fontSize: 25,
     },
     [theme.breakpoints.only('md')]: {
-      marginTop: 15,
-      fontSize: 32,
+      width: 320,
+      marginTop: 13,
+      fontSize: 28,
     },
     [theme.breakpoints.only('lg')]: {
-      marginTop: 15,
-      fontSize: 26,
+      width: 255,
+      marginTop: 13,
+      fontSize: 22,
     },
     [theme.breakpoints.only('xl')]: {
+      width: 255,
       marginTop: 15,
-      fontSize: 26,
+      fontSize: 23,
     },
   },
 }));

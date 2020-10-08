@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
 import useGetLikes from '../../hooks/useGetLikes';
+import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
 import CardRecipe from '../../utils/CardRecipe';
 import { mainId } from '../../utils/scrollRefs.json';
-
-import testImg from '../../assets/static/hero-desktop.jpg';
 
 const useStyle = makeStyles((theme) => ({
   categoriesList: {
@@ -38,12 +37,12 @@ const useStyle = makeStyles((theme) => ({
 
 const MainList = () => {
   const classes = useStyle();
+  const randomRecipes = useGetRandomRecipes();
   const [likesValues, lastMaxValue] = useGetLikes();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log(likesValues);
-    console.log(lastMaxValue);
+    console.log(likesValues[0]);
   }, []);
 
   return (
@@ -59,12 +58,15 @@ const MainList = () => {
             {loading ? (
               <CardSkeleton />
             ) : (
-              <CardRecipe
-                title={'Recipe test'}
-                likes={900}
-                time={20}
-                img={testImg}
-              />
+              randomRecipes.map((item, index) => (
+                <CardRecipe
+                  key={index}
+                  title={item.title}
+                  likes={likesValues[index]}
+                  time={item.readyInMinutes}
+                  img={item.image}
+                />
+              ))
             )}
           </Grid>
         </Grid>
