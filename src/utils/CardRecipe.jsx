@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardMedia,
@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { FavoriteBorder, AccessTime } from '@material-ui/icons';
+import DialogRecipe from './DialogRecipe';
 
 const useStyle = makeStyles((theme) => ({
   card: {
@@ -80,49 +81,63 @@ const useStyle = makeStyles((theme) => ({
 const CardRecipe = (props) => {
   const { title, likes, time, img } = props;
   const classes = useStyle();
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   return (
-    <Grid item xs={12} sm={6} lg={3} className={classes.cardContainer}>
-      <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.cardImage}
-            src={img}
-            component="img"
-            alt="card-img"
-          />
-          <CardHeader
-            className={classes.cardContent}
-            title={
-              <Typography
-                variant="h2"
-                color="initial"
-                className={classes.cardTitle}
-              >
-                {title}
-              </Typography>
-            }
-          />
-        </CardActionArea>
-        <CardActions className={classes.cardContent}>
-          <Button
-            size="large"
-            variant="text"
-            disabled
-            startIcon={<FavoriteBorder />}
-          >
-            {likes}
-          </Button>
-          <Button
-            size="large"
-            variant="text"
-            disabled
-            startIcon={<AccessTime />}
-          >
-            {time} min
-          </Button>
-        </CardActions>
-      </Card>
-    </Grid>
+    <>
+      <Grid item xs={12} sm={6} lg={3} className={classes.cardContainer}>
+        <Card className={classes.card}>
+          <CardActionArea onClick={handleOpenDialog}>
+            <CardMedia
+              className={classes.cardImage}
+              src={img}
+              component="img"
+              alt="card-img"
+            />
+            <CardHeader
+              className={classes.cardContent}
+              title={
+                <Typography
+                  variant="h2"
+                  color="initial"
+                  className={classes.cardTitle}
+                >
+                  {title}
+                </Typography>
+              }
+            />
+          </CardActionArea>
+          <CardActions className={classes.cardContent}>
+            <Button
+              size="large"
+              variant="text"
+              disabled
+              startIcon={<FavoriteBorder />}
+            >
+              {likes}
+            </Button>
+            <Button
+              size="large"
+              variant="text"
+              disabled
+              startIcon={<AccessTime />}
+            >
+              {time} min
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+      <DialogRecipe open={openDialog} handleClose={handleCloseDialog} />
+    </>
   );
 };
 

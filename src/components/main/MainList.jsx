@@ -39,7 +39,7 @@ const useStyle = makeStyles((theme) => ({
 const MainList = () => {
   const classes = useStyle();
   const [likesValues, lastMaxValue] = useGetLikes();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log(likesValues);
