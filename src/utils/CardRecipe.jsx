@@ -109,7 +109,6 @@ const CardRecipe = (props) => {
               className={classes.cardImage}
               src={img}
               component="img"
-              alt="card-img"
             />
             <CardHeader
               className={classes.cardContent}

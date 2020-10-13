@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, makeStyles, Container, Typography } from '@material-ui/core';
 import ScrollToResults from '../../utils/ScrollToResults';
 import { searchId } from '../../utils/scrollRefs.json';
@@ -35,6 +35,8 @@ const useStyle = makeStyles((theme) => ({
 const SearchResults = (props) => {
   const { searchValue } = props;
 
+  const [loading, setLoading] = useState(true);
+
   const classes = useStyle();
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const SearchResults = (props) => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            <CardSkeleton />
+            {loading ? (<CardSkeleton />) : null}
           </Grid>
         </Grid>
       </Container>

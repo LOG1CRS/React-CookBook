@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
-import useGetLikes from '../../hooks/useGetLikes';
 import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
@@ -37,12 +36,12 @@ const useStyle = makeStyles((theme) => ({
 
 const MainList = () => {
   const classes = useStyle();
-  const randomRecipes = useGetRandomRecipes();
-  const [likesValues, lastMaxValue] = useGetLikes();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [recipesLikes, setRecipesLikes] = useState([]);
+  const [randomRecipes, likesValues, lastMaxValue] = useGetRandomRecipes(setLoading);
 
   useEffect(() => {
-    console.log(likesValues[0]);
+    setRecipesLikes(likesValues)
   }, []);
 
   return (
@@ -62,7 +61,7 @@ const MainList = () => {
                 <CardRecipe
                   key={index}
                   title={item.title}
-                  likes={likesValues[index]}
+                  likes={recipesLikes[index]}
                   time={item.readyInMinutes}
                   img={item.image}
                 />
