@@ -3,7 +3,8 @@ import { Grid, makeStyles, Container, Typography } from '@material-ui/core';
 import ScrollToResults from '../../utils/ScrollToResults';
 import { searchId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
-
+import useGetSearchedRecipe from '../../hooks/useGetSearchedRecipe';
+import CardRecipe from '../../utils/CardRecipe';
 const useStyle = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -34,13 +35,18 @@ const useStyle = makeStyles((theme) => ({
 
 const SearchResults = (props) => {
   const { searchValue } = props;
+  const classes = useStyle();
 
   const [loading, setLoading] = useState(true);
-
-  const classes = useStyle();
+  const [recipesLikes, setRecipesLikes] = useState([]);
+  const [searchedRecipes, likesValues, lastMaxValue] = useGetSearchedRecipe(
+    searchValue,
+    setLoading
+  );
 
   useEffect(() => {
     ScrollToResults(searchId);
+    setRecipesLikes(likesValues);
   }, []);
 
   return (
@@ -54,7 +60,19 @@ const SearchResults = (props) => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            {loading ? (<CardSkeleton />) : null}
+            {loading ? (
+              <CardSkeleton />
+            ) : (
+              searchedRecipes.map((item, index) => (
+                <CardRecipe
+                  key={index}
+                  title={item.title}
+                  likes={recipesLikes[index]}
+                  time={item.readyInMinutes}
+                  img={item.image}
+                />
+              ))
+            )}
           </Grid>
         </Grid>
       </Container>

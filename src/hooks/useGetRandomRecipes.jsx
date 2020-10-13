@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { spoonacular_api_key } from '../api-keys.json';
+import { api_key } from '../api-keys.json';
 import useGetLikes from './useGetLikes';
 
 const useGetRandomRecipes = (setLoading) => {
@@ -12,7 +12,7 @@ const useGetRandomRecipes = (setLoading) => {
 
   const getRandomRecipe = async () => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${spoonacular_api_key}&number=12`
+      `https://api.spoonacular.com/recipes/random?apiKey=${api_key}&number=12`
     );
     const data = await response.json();
     setRandomRecipes(data.recipes);
