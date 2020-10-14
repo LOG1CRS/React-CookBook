@@ -45,7 +45,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const CategoriesList = (props) => {
-  const { setResults, setFoodType } = props;
+  const { setResults, setFoodType, setCuisineTitle } = props;
   const classes = useStyle();
   return (
     <Grid container className={classes.categoriesList}>
@@ -67,6 +67,7 @@ const CategoriesList = (props) => {
                   {...item}
                   setResults={setResults}
                   setFoodType={setFoodType}
+                  setCuisineTitle={setCuisineTitle}
                 />
               </Grid>
             </Grid>

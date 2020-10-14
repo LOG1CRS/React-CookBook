@@ -12,7 +12,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     [theme.breakpoints.only('xl')]: {
       paddingTop: 50,
-      paddingBottom: 30,
+      paddingBottom: 50,
     },
     [theme.breakpoints.only('lg')]: {
       paddingTop: 40,
@@ -29,6 +29,30 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.only('xs')]: {
       paddingTop: 55,
       paddingBottom: 55,
+    },
+  },
+  title: {
+    [theme.breakpoints.only('xl')]: {
+      fontSize: 60,
+    },
+    [theme.breakpoints.only('lg')]: {
+      fontSize: 53,
+    },
+    [theme.breakpoints.only('md')]: {
+      fontSize: 70,
+      marginLeft: 57,
+    },
+    [theme.breakpoints.only('sm')]: {
+      fontSize: 60,
+    },
+    [theme.breakpoints.only('xs')]: {
+      fontSize: 45,
+    },
+  },
+  titleContainer: {
+    marginBottom: 25,
+    [theme.breakpoints.down('md')]: {
+      marginBottom: 30,
     },
   },
 }));
@@ -53,8 +77,13 @@ const SearchResults = (props) => {
     <Grid container className={classes.root}>
       <Container>
         <Grid container>
-          <Grid item xs={12}>
-            <Typography variant="h2" color="initial" id={searchId}>
+          <Grid item xs={12} className={classes.titleContainer}>
+            <Typography
+              variant="h2"
+              color="initial"
+              id={searchId}
+              className={classes.title}
+            >
               {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}{' '}
               recipes
             </Typography>

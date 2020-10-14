@@ -13,7 +13,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     [theme.breakpoints.only('xl')]: {
       paddingTop: 50,
-      paddingBottom: 30,
+      paddingBottom: 50,
     },
     [theme.breakpoints.only('lg')]: {
       paddingTop: 40,
@@ -32,24 +32,55 @@ const useStyle = makeStyles((theme) => ({
       paddingBottom: 55,
     },
   },
+  title: {
+    [theme.breakpoints.only('xl')]: {
+      fontSize: 60,
+    },
+    [theme.breakpoints.only('lg')]: {
+      fontSize: 53,
+    },
+    [theme.breakpoints.only('md')]: {
+      fontSize: 70,
+      marginLeft: 57,
+    },
+    [theme.breakpoints.only('sm')]: {
+      fontSize: 60,
+    },
+    [theme.breakpoints.only('xs')]: {
+      fontSize: 45,
+    },
+  },
+  titleContainer: {
+    marginBottom: 25,
+    [theme.breakpoints.down('md')]: {
+      marginBottom: 30,
+    },
+  },
 }));
 
 const MainList = () => {
   const classes = useStyle();
   const [loading, setLoading] = useState(true);
   const [recipesLikes, setRecipesLikes] = useState([]);
-  const [randomRecipes, likesValues, lastMaxValue] = useGetRandomRecipes(setLoading);
+  const [randomRecipes, likesValues, lastMaxValue] = useGetRandomRecipes(
+    setLoading
+  );
 
   useEffect(() => {
-    setRecipesLikes(likesValues)
+    setRecipesLikes(likesValues);
   }, []);
 
   return (
     <Grid container className={classes.categoriesList}>
       <Container>
         <Grid container>
-          <Grid item xs={12}>
-            <Typography variant="h2" color="initial" id={mainId}>
+          <Grid item xs={12} className={classes.titleContainer}>
+            <Typography
+              variant="h2"
+              color="initial"
+              id={mainId}
+              className={classes.title}
+            >
               Featured
             </Typography>
           </Grid>

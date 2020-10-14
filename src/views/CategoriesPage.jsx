@@ -6,13 +6,18 @@ import CategoriesResults from '../components/categories/CategoriesResults';
 const CategoriesPage = () => {
   const [results, setResults] = useState(false);
   const [foodType, setFoodType] = useState('');
+  const [cuisineTitle, setCuisineTitle] = useState('');
   return (
     <>
       <HeroCategories setResults={setResults} />
       {results ? (
-        <CategoriesResults foodType={foodType} />
+        <CategoriesResults foodType={foodType} cuisineTitle={cuisineTitle} />
       ) : (
-        <CategoriesList setResults={setResults} setFoodType={setFoodType} />
+        <CategoriesList
+          setResults={setResults}
+          setFoodType={setFoodType}
+          setCuisineTitle={setCuisineTitle}
+        />
       )}
     </>
   );

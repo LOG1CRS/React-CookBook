@@ -7,12 +7,13 @@ const useGetSearchedRecipe = (searchValue, setLoading) => {
   const [likesValues, lastMaxValue] = useGetLikes(12, 10000, 500);
 
   useEffect(() => {
+    setLoading(true);
     getSearchedRecipe(searchValue);
-  }, []);
+  }, [searchValue]);
 
   const getSearchedRecipe = async (searchValue) => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${api_key}&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${api_key}&addRecipeInformation=true&query=${searchValue}&number=12`
     );
     const data = await response.json();
     setSearchedRecipes(data.results);

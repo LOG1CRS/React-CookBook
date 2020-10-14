@@ -46,11 +46,12 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const CategoriesButton = (props) => {
-  const { title, img, type, setResults, setFoodType } = props;
+  const { title, img, type, setResults, setFoodType, setCuisineTitle } = props;
   const classes = useStyle();
 
   const clickHandler = (cardType) => {
     setFoodType(cardType);
+    setCuisineTitle(title);
     setResults(true);
   };
 
