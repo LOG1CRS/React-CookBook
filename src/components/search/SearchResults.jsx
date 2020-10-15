@@ -89,7 +89,7 @@ const SearchResults = (props) => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            {loading ? (
+            {loading || searchedRecipes === undefined ? (
               <CardSkeleton />
             ) : (
               searchedRecipes.map((item, index) => (

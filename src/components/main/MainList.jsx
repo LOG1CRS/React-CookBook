@@ -85,7 +85,7 @@ const MainList = () => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            {loading ? (
+            {loading || randomRecipes === undefined ? (
               <CardSkeleton />
             ) : (
               randomRecipes.map((item, index) => (
