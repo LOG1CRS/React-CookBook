@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
 import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
@@ -56,52 +56,84 @@ const useStyle = makeStyles((theme) => ({
       marginBottom: 30,
     },
   },
+  loader: {
+    display: 'none',
+  },
 }));
 
 const MainList = () => {
   const classes = useStyle();
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const loader = useRef(null);
   const [recipesLikes, setRecipesLikes] = useState([]);
-  const [randomRecipes, likesValues, lastMaxValue] = useGetRandomRecipes(
-    setLoading
+  const [randomRecipes, setRandomRecipes] = useState([]);
+  const [lastMaxValue, setLastMaxValue] = useState(null);
+  const [likesValues] = useGetRandomRecipes(
+    setLoading,
+    page,
+    randomRecipes,
+    setRandomRecipes,
+    lastMaxValue,
+    setLastMaxValue
   );
 
   useEffect(() => {
     setRecipesLikes(likesValues);
+    var options = {
+      root: null,
+      rootMargin: '20px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
   }, []);
 
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      setPage((page) => page + 1);
+    }
+  };
+
   return (
-    <Grid container className={classes.categoriesList}>
-      <Container>
-        <Grid container>
-          <Grid item xs={12} className={classes.titleContainer}>
-            <Typography
-              variant="h2"
-              color="initial"
-              id={mainId}
-              className={classes.title}
-            >
-              Featured
-            </Typography>
+    <>
+      <Grid container className={classes.categoriesList}>
+        <Container>
+          <Grid container>
+            <Grid item xs={12} className={classes.titleContainer}>
+              <Typography
+                variant="h2"
+                color="initial"
+                id={mainId}
+                className={classes.title}
+              >
+                Featured
+              </Typography>
+            </Grid>
+            <Grid container spacing={4}>
+              {loading ? (
+                <CardSkeleton />
+              ) : (
+                randomRecipes.map((item, index) => (
+                  <CardRecipe
+                    key={index}
+                    title={item.title}
+                    likes={recipesLikes[index]}
+                    time={item.readyInMinutes}
+                    img={item.image}
+                  />
+                ))
+              )}
+            </Grid>
           </Grid>
-          <Grid container spacing={4}>
-            {loading || randomRecipes === undefined ? (
-              <CardSkeleton />
-            ) : (
-              randomRecipes.map((item, index) => (
-                <CardRecipe
-                  key={index}
-                  title={item.title}
-                  likes={recipesLikes[index]}
-                  time={item.readyInMinutes}
-                  img={item.image}
-                />
-              ))
-            )}
-          </Grid>
-        </Grid>
-      </Container>
-    </Grid>
+        </Container>
+      </Grid>
+      <div ref={loader} />
+    </>
   );
 };
 

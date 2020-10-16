@@ -90,7 +90,7 @@ const CategoriesResults = (props) => {
             </Typography>
           </Grid>
           <Grid container spacing={4}>
-            {loading || cuisineRecipes === undefined ? (
+            {loading ? (
               <CardSkeleton />
             ) : (
               cuisineRecipes.map((item, index) => (

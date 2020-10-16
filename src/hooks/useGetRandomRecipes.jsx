@@ -1,25 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useGetLikes from './useGetLikes';
 
-const useGetRandomRecipes = (setLoading) => {
-  const [randomRecipes, setRandomRecipes] = useState([]);
-  const [likesValues, lastMaxValue] = useGetLikes(12, 30000, 1000);
+const useGetRandomRecipes = (
+  setLoading,
+  page,
+  randomRecipes,
+  setRandomRecipes,
+  lastMaxValue,
+  setLastMaxValue
+) => {
   const { REACT_APP_API_KEY } = process.env;
+
+  if (lastMaxValue === null) {
+    lastMaxValue = 30000;
+  }
+
+  const [likesValues, lastLikesVaue] = useGetLikes(
+    12,
+    lastMaxValue,
+    1000,
+    page
+  );
 
   useEffect(() => {
     getRandomRecipe();
-  }, []);
+  }, [page]);
 
   const getRandomRecipe = async () => {
     const response = await fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=${REACT_APP_API_KEY}&number=12`
     );
     const data = await response.json();
-    setRandomRecipes(data.recipes);
-    setLoading(false);
+
+    if (data.code !== 402) {
+      setLoading(false);
+      const apiRecipes = randomRecipes.concat(data.recipes);
+      setRandomRecipes(apiRecipes);
+    } else {
+      setLoading(true);
+    }
   };
 
-  return [randomRecipes, likesValues, lastMaxValue];
+  return [likesValues];
 };
 
 export default useGetRandomRecipes;

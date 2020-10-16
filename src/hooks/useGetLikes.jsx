@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const useGetLikes = (loopValue, maxValue, valueGap) => {
+const useGetLikes = (loopValue, maxValue, valueGap, page) => {
   const likesValues = [];
   const lastMaxValue = useRef();
 
@@ -17,7 +17,7 @@ const useGetLikes = (loopValue, maxValue, valueGap) => {
     };
 
     getLikes(loopValue, maxValue, valueGap);
-  }, [likesValues]);
+  }, [page]);
 
   return [likesValues, lastMaxValue];
 };

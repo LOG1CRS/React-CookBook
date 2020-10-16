@@ -16,8 +16,13 @@ const useGetCuisineRecipes = (foodType, setLoading) => {
     );
 
     const data = await response.json();
-    setCuisineRecipes(data.results);
-    setLoading(false);
+
+    if (data.code !== 402) {
+      setCuisineRecipes(data.results);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
   };
 
   return [cuisineRecipes, likesValues, lastMaxValue];

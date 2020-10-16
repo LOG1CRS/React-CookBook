@@ -13,11 +13,16 @@ const useGetSearchedRecipe = (searchValue, setLoading) => {
 
   const getSearchedRecipe = async (searchValue) => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&query=${searchValue}&number=12`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&query=${searchValue}&number=100`
     );
     const data = await response.json();
-    setSearchedRecipes(data.results);
-    setLoading(false);
+
+    if (data.code !== 402) {
+      setSearchedRecipes(data.results);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
   };
 
   return [searchedRecipes, likesValues, lastMaxValue];
