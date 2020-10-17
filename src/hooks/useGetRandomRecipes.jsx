@@ -15,12 +15,7 @@ const useGetRandomRecipes = (
     lastMaxValue = 30000;
   }
 
-  const [likesValues, lastLikesVaue] = useGetLikes(
-    12,
-    lastMaxValue,
-    1000,
-    page
-  );
+  const [likesValues, lastLikesVaue] = useGetLikes(12, lastMaxValue, 1000);
 
   useEffect(() => {
     getRandomRecipe();
@@ -32,7 +27,7 @@ const useGetRandomRecipes = (
     );
     const data = await response.json();
 
-    if (data.code !== 402) {
+    if (!data.code) {
       setLoading(false);
       const apiRecipes = randomRecipes.concat(data.recipes);
       setRandomRecipes(apiRecipes);

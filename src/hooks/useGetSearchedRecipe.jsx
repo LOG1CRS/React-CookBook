@@ -3,7 +3,7 @@ import useGetLikes from './useGetLikes';
 
 const useGetSearchedRecipe = (searchValue, setLoading) => {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
-  const [likesValues, lastMaxValue] = useGetLikes(12, 10000, 500);
+  const [likesValues, lastMaxValue] = useGetLikes(100, 25000, 500);
   const { REACT_APP_API_KEY } = process.env;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useGetSearchedRecipe = (searchValue, setLoading) => {
     );
     const data = await response.json();
 
-    if (data.code !== 402) {
+    if (!data.code) {
       setSearchedRecipes(data.results);
       setLoading(false);
     } else {

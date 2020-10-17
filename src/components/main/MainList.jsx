@@ -90,6 +90,10 @@ const MainList = () => {
     if (loader.current) {
       observer.observe(loader.current);
     }
+
+    return () => {
+      setRandomRecipes([]);
+    };
   }, []);
 
   const handleObserver = (entities) => {
