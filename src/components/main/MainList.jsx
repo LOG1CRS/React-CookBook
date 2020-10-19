@@ -68,14 +68,11 @@ const MainList = () => {
   const loader = useRef(null);
   const [recipesLikes, setRecipesLikes] = useState([]);
   const [randomRecipes, setRandomRecipes] = useState([]);
-  const [lastMaxValue, setLastMaxValue] = useState(null);
   const [likesValues] = useGetRandomRecipes(
     setLoading,
     page,
     randomRecipes,
-    setRandomRecipes,
-    lastMaxValue,
-    setLastMaxValue
+    setRandomRecipes
   );
 
   useEffect(() => {
@@ -125,10 +122,8 @@ const MainList = () => {
                 randomRecipes.map((item, index) => (
                   <CardRecipe
                     key={index}
-                    title={item.title}
+                    recipe={item}
                     likes={recipesLikes[index]}
-                    time={item.readyInMinutes}
-                    img={item.image}
                   />
                 ))
               )}

@@ -1,21 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useGetLikes from './useGetLikes';
 
 const useGetRandomRecipes = (
   setLoading,
   page,
   randomRecipes,
-  setRandomRecipes,
-  lastMaxValue,
-  setLastMaxValue
+  setRandomRecipes
 ) => {
   const { REACT_APP_API_KEY } = process.env;
 
-  if (lastMaxValue === null) {
-    lastMaxValue = 30000;
-  }
-
-  const [likesValues, lastLikesVaue] = useGetLikes(12, lastMaxValue, 1000);
+  const [likesValues, lastLikesValue] = useGetLikes(12, 30000, 1000);
 
   useEffect(() => {
     getRandomRecipe();

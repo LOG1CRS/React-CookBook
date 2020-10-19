@@ -87,7 +87,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const CardRecipe = (props) => {
-  const { title, likes, time, img } = props;
+  const { recipe, likes } = props;
   const classes = useStyle();
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -107,7 +107,7 @@ const CardRecipe = (props) => {
           <CardActionArea onClick={handleOpenDialog}>
             <CardMedia
               className={classes.cardImage}
-              src={img}
+              src={recipe.image}
               component="img"
             />
             <CardHeader
@@ -118,7 +118,7 @@ const CardRecipe = (props) => {
                   color="initial"
                   className={classes.cardTitle}
                 >
-                  {title}
+                  {recipe.title}
                 </Typography>
               }
             />
@@ -138,12 +138,17 @@ const CardRecipe = (props) => {
               disabled
               startIcon={<AccessTime />}
             >
-              {time} min
+              {recipe.readyInMinutes} min
             </Button>
           </CardActions>
         </Card>
       </Grid>
-      <DialogRecipe open={openDialog} handleClose={handleCloseDialog} />
+      <DialogRecipe
+        open={openDialog}
+        handleClose={handleCloseDialog}
+        recipe={recipe}
+        likes={likes}
+      />
     </>
   );
 };

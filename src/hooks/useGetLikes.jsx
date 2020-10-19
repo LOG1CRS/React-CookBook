@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const useGetLikes = (loopValue, maxValue, valueGap) => {
   const likesValues = [];
