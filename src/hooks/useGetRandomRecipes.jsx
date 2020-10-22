@@ -21,7 +21,7 @@ const useGetRandomRecipes = (
     );
     const data = await response.json();
 
-    if (!data.code) {
+    if (!data.code || data === undefined) {
       setLoading(false);
       const apiRecipes = randomRecipes.concat(data.recipes);
       setRandomRecipes(apiRecipes);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AppBar,
   Tabs,
@@ -33,7 +33,8 @@ const TabPanel = (props) => {
 
 const RecipeTabs = (props) => {
   const { recipe, tabValue, handleTabChange, handleChangeIndex } = props;
-  const recipeNutrition = useGetRecipeNutrition(recipe.id);
+  const [loading, setLoading] = useState(true);
+  const recipeNutrition = useGetRecipeNutrition(recipe.id, setLoading);
 
   const theme = useTheme();
 
@@ -77,7 +78,7 @@ const RecipeTabs = (props) => {
         </TabPanel>
         <TabPanel value={tabValue} index={2} dir={theme.direction}>
           <Typography>Nutrition</Typography>
-          {recipeNutrition ? (
+          {!loading ? (
             <>
               <Typography>Calories: {recipeNutrition.calories}</Typography>
               <Typography>Carbs: {recipeNutrition.carbs}</Typography>

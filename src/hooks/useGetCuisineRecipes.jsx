@@ -17,7 +17,7 @@ const useGetCuisineRecipes = (foodType, setLoading) => {
 
     const data = await response.json();
 
-    if (!data.code) {
+    if (!data.code || data === undefined) {
       setCuisineRecipes(data.results);
       setLoading(false);
     } else {

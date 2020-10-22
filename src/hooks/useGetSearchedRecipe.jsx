@@ -17,7 +17,7 @@ const useGetSearchedRecipe = (searchValue, setLoading) => {
     );
     const data = await response.json();
 
-    if (!data.code) {
+    if (!data.code || data === undefined) {
       setSearchedRecipes(data.results);
       setLoading(false);
     } else {
