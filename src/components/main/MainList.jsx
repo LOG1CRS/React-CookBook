@@ -3,7 +3,7 @@ import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
 import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
-import CardRecipe from '../../utils/CardRecipe';
+import CardRecipe from '../../utils/Recipe/CardRecipe';
 import { mainId } from '../../utils/scrollRefs.json';
 
 const useStyle = makeStyles((theme) => ({

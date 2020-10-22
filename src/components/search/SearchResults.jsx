@@ -4,7 +4,8 @@ import ScrollToResults from '../../utils/ScrollToResults';
 import { searchId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
 import useGetSearchedRecipe from '../../hooks/useGetSearchedRecipe';
-import CardRecipe from '../../utils/CardRecipe';
+import CardRecipe from '../../utils/Recipe/CardRecipe';
+
 const useStyle = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -151,10 +152,8 @@ const SearchResults = (props) => {
                 recipesResults.map((item, index) => (
                   <CardRecipe
                     key={index}
-                    title={item.title}
+                    recipe={item}
                     likes={recipesLikes[index]}
-                    time={item.readyInMinutes}
-                    img={item.image}
                   />
                 ))
               ) : (

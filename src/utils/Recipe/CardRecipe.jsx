@@ -105,9 +105,9 @@ const CardRecipe = (props) => {
       <Grid item xs={12} sm={6} lg={3} className={classes.cardContainer}>
         <Card className={classes.card}>
           <CardActionArea onClick={handleOpenDialog}>
-            <CardMedia
+            <Grid
               className={classes.cardImage}
-              src={recipe.image}
+              src={`https://spoonacular.com/recipeImages/${recipe.id}-636x393.jpg`}
               component="img"
             />
             <CardHeader

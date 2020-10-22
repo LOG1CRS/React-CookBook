@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Grid, Container, makeStyles, Typography } from '@material-ui/core';
 import useGetCuisineRecipes from '../../hooks/useGetCuisineRecipes';
-import CardRecipe from '../../utils/CardRecipe';
+import CardRecipe from '../../utils/Recipe/CardRecipe';
 
 import { categoriesResultsId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
@@ -132,10 +132,8 @@ const CategoriesResults = (props) => {
                 recipesResults.map((item, index) => (
                   <CardRecipe
                     key={index}
-                    title={item.title}
+                    recipe={item}
                     likes={recipesLikes[index]}
-                    time={item.readyInMinutes}
-                    img={item.image}
                   />
                 ))
               )}
