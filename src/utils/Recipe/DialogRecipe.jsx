@@ -7,27 +7,15 @@ import {
   AppBar,
   Toolbar,
   Grid,
-  DialogTitle,
   DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
   makeStyles,
   Paper,
-  Typography,
   SvgIcon,
   Container,
-  ButtonGroup,
-  Divider,
+  DialogTitle,
 } from '@material-ui/core';
-import {
-  Close,
-  FavoriteBorder,
-  AccessTime,
-  Fastfood,
-} from '@material-ui/icons';
-import { Markup } from 'interweave';
-import RecipeTabs from './RecipeTabs';
+import { Close } from '@material-ui/icons';
+import DialogInformation from './DialogInformation';
 
 const useStyle = makeStyles((theme) => ({
   cardImg: {
@@ -59,32 +47,17 @@ const useStyle = makeStyles((theme) => ({
       paddingTop: 20,
     },
   },
-  recipeTitle: {
-    fontSize: 30,
-    [theme.breakpoints.only('sm')]: {
-      fontSize: 30,
-    },
-    [theme.breakpoints.only('md')]: {
-      fontSize: 30,
-    },
+  dialogDesktop: {
+    borderRadius: 20,
   },
-  recipeAuthor: {
-    fontSize: 25,
-    [theme.breakpoints.only('sm')]: {
-      fontSize: 30,
-    },
-    [theme.breakpoints.only('md')]: {
-      fontSize: 30,
-    },
+  dialogDesktopClose: {
+    paddingTop: 0,
   },
-  recipeSections: {
-    fontSize: 30,
-    [theme.breakpoints.only('sm')]: {
-      fontSize: 30,
-    },
-    [theme.breakpoints.only('md')]: {
-      fontSize: 30,
-    },
+  dialogDesktopImg: {
+    width: 200,
+  },
+  dialogImg: {
+    height: 400,
   },
 }));
 
@@ -146,82 +119,13 @@ const DialogRecipe = (props) => {
           </Grid>
           <Paper elevation={0} className={classes.content}>
             <Container>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="h1"
-                    color="initial"
-                    className={classes.recipeTitle}
-                  >
-                    {recipe.title}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="h3"
-                    color="initial"
-                    className={classes.recipeAuthor}
-                  >
-                    Author: {recipe.sourceName}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <ButtonGroup>
-                    <Button
-                      size="large"
-                      variant="text"
-                      disabled
-                      startIcon={<FavoriteBorder />}
-                    >
-                      {likes}
-                    </Button>
-                    <Button
-                      size="large"
-                      variant="text"
-                      disabled
-                      startIcon={<AccessTime />}
-                    >
-                      {recipe.readyInMinutes} min
-                    </Button>
-                    <Button
-                      size="large"
-                      variant="text"
-                      disabled
-                      startIcon={<Fastfood />}
-                    >
-                      {recipe.servings} portions
-                    </Button>
-                  </ButtonGroup>
-                </Grid>
-                <Divider />
-                <Grid item xs={12}>
-                  <Typography
-                    variant="h2"
-                    color="initial"
-                    className={classes.recipeSections}
-                  >
-                    Description
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} className={classes.recipeDescription}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    component={'span'}
-                  >
-                    <Markup content={recipe.summary} noHtml />
-                  </Typography>
-                </Grid>
-                <Divider />
-                <Grid item xs={12}>
-                  <RecipeTabs
-                    recipe={recipe}
-                    tabValue={tabValue}
-                    handleTabChange={handleTabChange}
-                    handleChangeIndex={handleChangeIndex}
-                  />
-                </Grid>
-              </Grid>
+              <DialogInformation
+                recipe={recipe}
+                likes={likes}
+                tabValue={tabValue}
+                handleTabChange={handleTabChange}
+                handleChangeIndex={handleChangeIndex}
+              />
             </Container>
           </Paper>
         </Dialog>
@@ -229,28 +133,47 @@ const DialogRecipe = (props) => {
       <Hidden mdDown>
         <Dialog
           fullWidth
+          maxWidth="lg"
           open={open}
           onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
+          classes={{ paper: classes.dialogDesktop }}
         >
-          <DialogTitle id="alert-dialog-title">
-            {"Use Google's location service?"}
+          <DialogTitle>
+            <Grid container justify="flex-end">
+              <IconButton
+                edge="end"
+                color="inherit"
+                size="medium"
+                className={classes.dialogDesktopClose}
+                onClick={handleClose}
+              >
+                <Close fontSize="large" />
+              </IconButton>
+            </Grid>
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
-            </DialogContentText>
+            <Grid container>
+              <Grid
+                item
+                xs={5}
+                className={classes.dialogImg}
+                style={{
+                  backgroundImage: `url(https://spoonacular.com/recipeImages/${recipe.id}-636x393.jpg)`,
+                }}
+              />
+              <Grid item xs={7}>
+                <Grid container>
+                  <DialogInformation
+                    recipe={recipe}
+                    likes={likes}
+                    tabValue={tabValue}
+                    handleTabChange={handleTabChange}
+                    handleChangeIndex={handleChangeIndex}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={handleClose} color="primary" autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
         </Dialog>
       </Hidden>
     </>
