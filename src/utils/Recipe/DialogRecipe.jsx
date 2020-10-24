@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import DialogInformation from './DialogInformation';
+import RecipeTabs from './RecipeTabs';
 
 const useStyle = makeStyles((theme) => ({
   cardImg: {
@@ -36,7 +37,6 @@ const useStyle = makeStyles((theme) => ({
     position: 'relative',
     bottom: 40,
     width: '100%',
-    height: '100%',
     borderRadius: '40px 40px 0 0',
     boxShadow: '0 -6px 6px rgba(0,0,0,0.16)',
     paddingTop: 35,
@@ -58,6 +58,19 @@ const useStyle = makeStyles((theme) => ({
   },
   dialogImg: {
     height: 400,
+    borderRadius: 30,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+  },
+  mainInformation: {
+    paddingLeft: 30,
+  },
+  tabsContainer: {
+    [theme.breakpoints.only('xs')]: {
+      marginTop: 25,
+    },
+    marginTop: 20,
   },
 }));
 
@@ -119,13 +132,17 @@ const DialogRecipe = (props) => {
           </Grid>
           <Paper elevation={0} className={classes.content}>
             <Container>
-              <DialogInformation
-                recipe={recipe}
-                likes={likes}
-                tabValue={tabValue}
-                handleTabChange={handleTabChange}
-                handleChangeIndex={handleChangeIndex}
-              />
+              <DialogInformation recipe={recipe} likes={likes} />
+              <Grid container>
+                <Grid item xs={12} className={classes.tabsContainer}>
+                  <RecipeTabs
+                    recipe={recipe}
+                    tabValue={tabValue}
+                    handleTabChange={handleTabChange}
+                    handleChangeIndex={handleChangeIndex}
+                  />
+                </Grid>
+              </Grid>
             </Container>
           </Paper>
         </Dialog>
@@ -161,16 +178,16 @@ const DialogRecipe = (props) => {
                   backgroundImage: `url(https://spoonacular.com/recipeImages/${recipe.id}-636x393.jpg)`,
                 }}
               />
-              <Grid item xs={7}>
-                <Grid container>
-                  <DialogInformation
-                    recipe={recipe}
-                    likes={likes}
-                    tabValue={tabValue}
-                    handleTabChange={handleTabChange}
-                    handleChangeIndex={handleChangeIndex}
-                  />
-                </Grid>
+              <Grid item xs={7} className={classes.mainInformation}>
+                <DialogInformation recipe={recipe} likes={likes} />
+              </Grid>
+              <Grid item xs={12} className={classes.tabsContainer}>
+                <RecipeTabs
+                  recipe={recipe}
+                  tabValue={tabValue}
+                  handleTabChange={handleTabChange}
+                  handleChangeIndex={handleChangeIndex}
+                />
               </Grid>
             </Grid>
           </DialogContent>
