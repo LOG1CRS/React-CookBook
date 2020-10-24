@@ -7,8 +7,8 @@ import {
   Divider,
   makeStyles,
 } from '@material-ui/core';
-import { Markup } from 'interweave';
 import { FavoriteBorder, AccessTime, Fastfood } from '@material-ui/icons';
+import { Markup } from 'interweave';
 
 const useStyle = makeStyles((theme) => ({
   recipeTitle: {

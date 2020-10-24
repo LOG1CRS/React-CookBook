@@ -13,7 +13,7 @@ const useGetSearchedRecipe = (searchValue, setLoading) => {
 
   const getSearchedRecipe = async (searchValue) => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&query=${searchValue}&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&fillIngredients=true&query=${searchValue}&number=100`
     );
     const data = await response.json();
 

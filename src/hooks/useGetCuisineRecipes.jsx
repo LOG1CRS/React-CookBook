@@ -12,7 +12,7 @@ const useGetCuisineRecipes = (foodType, setLoading) => {
 
   const getCuisineRecipe = async (foodType) => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&cuisine=${foodType}&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${REACT_APP_API_KEY}&addRecipeInformation=true&fillIngredients=true&cuisine=${foodType}&number=100`
     );
 
     const data = await response.json();

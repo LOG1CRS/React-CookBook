@@ -23,6 +23,7 @@ import {
 import useGetRecipeNutrition from '../../hooks/useGetRecipeNutrition';
 import SwipeableViews from 'react-swipeable-views';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import RecipeErrorMessage from './RecipeErrorMessage';
 
 const useStyle = makeStyles((theme) => ({
   tabContainer: {
@@ -317,7 +318,9 @@ const RecipeTabs = (props) => {
                 </Grid>
               </Grid>
             </>
-          ) : null}
+          ) : (
+            <RecipeErrorMessage />
+          )}
         </TabPanel>
       </SwipeableViews>
     </>
