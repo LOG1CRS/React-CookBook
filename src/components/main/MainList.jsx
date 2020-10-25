@@ -76,7 +76,10 @@ const MainList = () => {
   );
 
   useEffect(() => {
-    setRecipesLikes(likesValues);
+    setRecipesLikes((oldLikes) => [...oldLikes, ...likesValues.current]);
+  }, [page]);
+
+  useEffect(() => {
     var options = {
       root: null,
       rootMargin: '20px',

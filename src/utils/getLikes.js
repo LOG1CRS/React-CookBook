@@ -1,8 +1,5 @@
-import { useRef } from 'react';
-
-const useGetLikes = (loopValue, maxValue, valueGap) => {
+const getLikes = (loopValue, maxValue, valueGap) => {
   const likesValues = [];
-  const lastMaxValue = useRef();
 
   for (let i = 0; i < loopValue; i++) {
     let minValue = maxValue - valueGap;
@@ -15,9 +12,9 @@ const useGetLikes = (loopValue, maxValue, valueGap) => {
     maxValue = likes;
     likesValues.push(likes);
   }
-  lastMaxValue.current = maxValue;
+  const lastMaxValue = maxValue;
 
   return [likesValues, lastMaxValue];
 };
 
-export default useGetLikes;
+export default getLikes;

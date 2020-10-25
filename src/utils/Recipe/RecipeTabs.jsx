@@ -37,6 +37,10 @@ const useStyle = makeStyles((theme) => ({
   nutritionsButton: {
     boxShadow: theme.shadows[2],
   },
+  preparation: {
+    boxShadow: theme.shadows[2],
+    width: '100%',
+  },
   nutritionContainer: {
     padding: 0,
     paddingTop: 10,
@@ -141,7 +145,7 @@ const RecipeTabs = (props) => {
           </TableContainer>
         </TabPanel>
         <TabPanel value={tabValue} index={1} dir={theme.direction}>
-          <List component="nav" className={classes.nutritionsButton}>
+          <List component="nav" className={classes.preparation}>
             {recipe.analyzedInstructions[0].steps.map((item, index) => (
               <ListItem key={index}>
                 <ListItemText

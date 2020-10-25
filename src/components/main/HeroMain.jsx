@@ -108,7 +108,7 @@ const HeroMain = () => {
               size="large"
               onClick={handleClick}
             >
-              Learn More!
+              Discover!
             </Button>
           </Grid>
         </Container>

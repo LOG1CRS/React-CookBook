@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import useGetLikes from './useGetLikes';
+import getLikes from '../utils/getLikes';
 
 const useGetCuisineRecipes = (foodType, setLoading) => {
   const [cuisineRecipes, setCuisineRecipes] = useState([]);
-  const [likesValues, lastMaxValue] = useGetLikes(100, 25000, 500);
+  const [likesValues, lastMaxValue] = getLikes(100, 25000, 500);
   const { REACT_APP_API_KEY } = process.env;
 
   useEffect(() => {

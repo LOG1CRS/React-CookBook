@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import useGetLikes from './useGetLikes';
+import { useEffect, useState, useRef } from 'react';
+import getLikes from '../utils/getLikes';
 
 const useGetRandomRecipes = (
   setLoading,
@@ -9,9 +9,14 @@ const useGetRandomRecipes = (
 ) => {
   const { REACT_APP_API_KEY } = process.env;
 
-  const [likesValues, lastLikesValue] = useGetLikes(12, 30000, 1000);
+  const [maxLikes, setMaxLikes] = useState(50000);
+  const likesValues = useRef([]);
 
   useEffect(() => {
+    const [likes, lastLikesValue] = getLikes(12, maxLikes, 500);
+    setMaxLikes(lastLikesValue);
+    likesValues.current = likes;
+
     getRandomRecipe();
   }, [page]);
 
