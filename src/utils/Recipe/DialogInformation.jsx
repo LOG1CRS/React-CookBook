@@ -19,6 +19,12 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.only('md')]: {
       fontSize: 50,
     },
+    [theme.breakpoints.only('lg')]: {
+      fontSize: 35,
+    },
+    [theme.breakpoints.only('xl')]: {
+      fontSize: 42,
+    },
   },
   recipeAuthor: {
     fontSize: 25,
