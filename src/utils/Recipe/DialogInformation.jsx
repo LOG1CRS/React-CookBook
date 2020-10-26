@@ -14,10 +14,10 @@ const useStyle = makeStyles((theme) => ({
   recipeTitle: {
     fontSize: 30,
     [theme.breakpoints.only('sm')]: {
-      fontSize: 30,
+      fontSize: 38,
     },
     [theme.breakpoints.only('md')]: {
-      fontSize: 30,
+      fontSize: 50,
     },
   },
   recipeAuthor: {

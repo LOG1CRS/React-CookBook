@@ -9,16 +9,8 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  ListItemSecondaryAction,
-  Switch,
 } from '@material-ui/core';
-import {
-  Search,
-  GitHub,
-  AllInbox,
-  Brightness7,
-  Brightness5,
-} from '@material-ui/icons';
+import { Search, GitHub, AllInbox } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 import { home, categories, repo, search } from '../../routes/routes.json';
@@ -166,16 +158,6 @@ const DrawerItem = (props) => {
               <ListItemText primary="Repository" />
             </ListItem>
           </a>
-          <Divider className={classes.itemSpace} />
-          <ListItem className={classes.itemSpace}>
-            <ListItemIcon>
-              <Brightness5 />
-            </ListItemIcon>
-            <ListItemText primary="Dark Mode" className={classes.link} />
-            <ListItemSecondaryAction>
-              <Switch color="primary" />
-            </ListItemSecondaryAction>
-          </ListItem>
         </List>
       </Grid>
     </Drawer>

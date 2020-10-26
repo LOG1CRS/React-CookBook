@@ -1,5 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { makeStyles, Grid, Container, Typography } from '@material-ui/core';
+import {
+  makeStyles,
+  Grid,
+  Container,
+  Typography,
+  Paper,
+} from '@material-ui/core';
 import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
@@ -10,7 +16,6 @@ const useStyle = makeStyles((theme) => ({
   categoriesList: {
     width: '100%',
     minHeight: '100vh',
-    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.only('xl')]: {
       paddingTop: 50,
       paddingBottom: 50,
@@ -104,7 +109,7 @@ const MainList = () => {
   };
 
   return (
-    <>
+    <Paper>
       <Grid container className={classes.categoriesList}>
         <Container>
           <Grid container>
@@ -135,7 +140,7 @@ const MainList = () => {
         </Container>
       </Grid>
       <div ref={loader} />
-    </>
+    </Paper>
   );
 };
 

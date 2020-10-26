@@ -13,7 +13,12 @@ const useStyle = makeStyles((theme) => ({
 const RecipeErrorMessage = () => {
   const classes = useStyle();
   return (
-    <Grid container className={classes.messageContainer}>
+    <Grid
+      container
+      className={classes.messageContainer}
+      alignContent="center"
+      justify="center"
+    >
       <Typography variant="h2" className={classes.message}>
         Ups! An error has occurred
       </Typography>

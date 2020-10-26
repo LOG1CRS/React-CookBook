@@ -9,14 +9,7 @@ import {
   Button,
   useScrollTrigger,
 } from '@material-ui/core';
-import {
-  Menu,
-  Search,
-  GitHub,
-  AllInbox,
-  Brightness7,
-  Brightness5,
-} from '@material-ui/icons';
+import { Menu, Search, GitHub, AllInbox } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { home, repo, search, categories } from '../../routes/routes.json';
 
@@ -88,6 +81,7 @@ const ElevationScroll = (props) => {
 
 const Navbar = (props) => {
   const classes = useStyle();
+
   return (
     <>
       <ElevationScroll>
@@ -155,9 +149,6 @@ const Navbar = (props) => {
                   Repository
                 </Button>
               </a>
-              <IconButton color="secondary">
-                <Brightness5 />
-              </IconButton>
             </Hidden>
           </Toolbar>
         </AppBar>

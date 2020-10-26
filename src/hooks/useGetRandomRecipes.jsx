@@ -13,7 +13,7 @@ const useGetRandomRecipes = (
   const likesValues = useRef([]);
 
   useEffect(() => {
-    const [likes, lastLikesValue] = getLikes(12, maxLikes, 500);
+    const [likes, lastLikesValue] = getLikes(12, maxLikes, 300);
     setMaxLikes(lastLikesValue);
     likesValues.current = likes;
 

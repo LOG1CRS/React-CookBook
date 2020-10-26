@@ -41,10 +41,7 @@ const useStyle = makeStyles((theme) => ({
     boxShadow: '0 -6px 6px rgba(0,0,0,0.16)',
     paddingTop: 35,
     [theme.breakpoints.only('sm')]: {
-      paddingTop: 20,
-    },
-    [theme.breakpoints.only('md')]: {
-      paddingTop: 20,
+      paddingTop: 30,
     },
   },
   dialogDesktop: {

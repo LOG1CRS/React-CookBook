@@ -146,14 +146,18 @@ const RecipeTabs = (props) => {
         </TabPanel>
         <TabPanel value={tabValue} index={1} dir={theme.direction}>
           <List component="nav" className={classes.preparation}>
-            {recipe.analyzedInstructions[0].steps.map((item, index) => (
-              <ListItem key={index}>
-                <ListItemText
-                  primary={`Step ${index + 1}`}
-                  secondary={item.step}
-                />
-              </ListItem>
-            ))}
+            {recipe.analyzedInstructions[0] !== undefined ? (
+              recipe.analyzedInstructions[0].steps.map((item, index) => (
+                <ListItem key={index}>
+                  <ListItemText
+                    primary={`Step ${index + 1}`}
+                    secondary={item.step}
+                  />
+                </ListItem>
+              ))
+            ) : (
+              <RecipeErrorMessage />
+            )}
           </List>
         </TabPanel>
         <TabPanel value={tabValue} index={2} dir={theme.direction}>
