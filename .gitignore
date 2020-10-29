@@ -12,6 +12,11 @@
 /coverage
 debug.log
 
+# firebase
+/.firebase
+.firebaserc
+firebase.json
+
 # production
 /build
 
