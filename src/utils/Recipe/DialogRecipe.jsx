@@ -111,7 +111,7 @@ const DialogRecipe = (props) => {
 
     if (!navigator.share) {
       navigator.clipboard.writeText(`${mainRoute}${recipe.id}`);
-      alert(`Recipe copy to clipboard! ${mainRoute}${recipe.id}`);
+      alert('Recipe copy to clipboard!');
       return;
     }
 
