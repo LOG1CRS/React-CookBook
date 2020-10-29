@@ -13,7 +13,13 @@ import {
 import { Search, GitHub, AllInbox } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
-import { home, categories, repo, search } from '../../routes/routes.json';
+import {
+  home,
+  categories,
+  repo,
+  search,
+  license,
+} from '../../routes/routes.json';
 
 import drawerImg from '../../assets/static/cookbook-icon.png';
 
@@ -29,6 +35,9 @@ const styles = makeStyles((theme) => ({
       width: 240,
     },
     flexShrink: 0,
+  },
+  drawerContainer: {
+    flexGrow: 1,
   },
   drawerPaper: {
     [theme.breakpoints.only('md')]: {
@@ -80,6 +89,10 @@ const styles = makeStyles((theme) => ({
       fontSize: 20,
     },
   },
+  licenseContainer: {
+    paddingBottom: 16,
+    paddingTop: 8,
+  },
 }));
 
 const DrawerItem = (props) => {
@@ -118,7 +131,7 @@ const DrawerItem = (props) => {
         </Link>
       </Grid>
       <Divider className={classes.itemSpace} />
-      <Grid container>
+      <Grid container className={classes.drawerContainer}>
         <List component="nav" className={classes.list}>
           <ListItem
             button
@@ -159,6 +172,20 @@ const DrawerItem = (props) => {
             </ListItem>
           </a>
         </List>
+      </Grid>
+      <Divider className={classes.itemSpace} />
+      <Grid container justify="center" className={classes.licenseContainer}>
+        <a
+          href={license}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.link}
+          onClick={props.onClose ? props.onClose : null}
+        >
+          <Typography variant="body1" color="initial" align="center">
+            &copy; Mit License
+          </Typography>
+        </a>
       </Grid>
     </Drawer>
   );
