@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../assets/style/themeConfig';
 import Layout from '../components/layout/Layout';
-import { home, search, categories } from './routes.json';
+import { home, search, categories, shared } from './routes.json';
 
 import Main from '../views/Main';
 import SearchPage from '../views/SearchPage';
@@ -20,6 +20,7 @@ const App = () => {
         <Layout>
           <Switch>
             <Route exact path={home} component={Main} />
+            <Route exact path={shared} component={Main} />
             <Route exact path={search} component={SearchPage} />
             <Route exact path={categories} component={CategoriesPage} />
             <Route component={NotFound} />

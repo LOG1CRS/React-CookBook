@@ -4,8 +4,6 @@ import {
   Dialog,
   Slide,
   IconButton,
-  AppBar,
-  Toolbar,
   Grid,
   DialogContent,
   makeStyles,
@@ -14,7 +12,8 @@ import {
   Container,
   DialogTitle,
 } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { Close, Share } from '@material-ui/icons';
+import { mainRoute } from '../../routes/routes.json';
 import DialogInformation from './DialogInformation';
 import RecipeTabs from './RecipeTabs';
 
@@ -44,12 +43,27 @@ const useStyle = makeStyles((theme) => ({
       paddingTop: 30,
     },
   },
+  dialogActionsContainer: {
+    [theme.breakpoints.only('sm')]: {
+      paddingLeft: 5,
+      paddingRight: 5,
+    },
+    [theme.breakpoints.only('md')]: {
+      paddingLeft: 8,
+      paddingRight: 8,
+    },
+  },
   dialogDesktop: {
     borderRadius: 20,
   },
   dialogDesktopClose: {
     paddingTop: 0,
   },
+  // dialogDesktopShare: {
+  //   paddingTop: 5,
+  //   position: 'absolute',
+  //   left: 32,
+  // },
   dialogDesktopImg: {
     width: 200,
   },
@@ -68,6 +82,9 @@ const useStyle = makeStyles((theme) => ({
       marginTop: 25,
     },
     marginTop: 20,
+  },
+  link: {
+    color: 'inherit',
   },
 }));
 
@@ -89,6 +106,22 @@ const DialogRecipe = (props) => {
     setTabValue(index);
   };
 
+  const handleShareRecipe = (e) => {
+    e.preventDefault();
+
+    if (!navigator.share) {
+      navigator.clipboard.writeText(`${mainRoute}${recipe.id}`);
+      alert(`Recipe copy to clipboard! ${mainRoute}${recipe.id}`);
+      return;
+    }
+
+    navigator.share({
+      title: `${recipe.title}`,
+      text: `A friend has shared a recipe with you! by: React Cookbook`,
+      url: `${mainRoute}${recipe.id}`,
+    });
+  };
+
   return (
     <>
       <Hidden lgUp>
@@ -106,11 +139,30 @@ const DialogRecipe = (props) => {
             }}
             className={classes.cardImg}
           >
-            <AppBar color="transparent" elevation={0}>
-              <Toolbar>
+            <Grid container className={classes.dialogActionsContainer}>
+              <Grid item xs={6}>
+                <Grid container justify="flex-start">
+                  <a
+                    href="/#"
+                    onClick={handleShareRecipe}
+                    className={classes.link}
+                  >
+                    <IconButton edge="end" color="secondary" size="medium">
+                      <SvgIcon
+                        component={Share}
+                        fontSize="large"
+                        stroke="black"
+                        strokeWidth={1}
+                        strokeLinecap="round"
+                      />
+                    </IconButton>
+                  </a>
+                </Grid>
+              </Grid>
+              <Grid item xs={6}>
                 <Grid container justify="flex-end">
                   <IconButton
-                    edge="end"
+                    edge="start"
                     color="secondary"
                     size="medium"
                     onClick={handleClose}
@@ -124,8 +176,8 @@ const DialogRecipe = (props) => {
                     />
                   </IconButton>
                 </Grid>
-              </Toolbar>
-            </AppBar>
+              </Grid>
+            </Grid>
           </Grid>
           <Paper elevation={0} className={classes.content}>
             <Container>
@@ -153,16 +205,33 @@ const DialogRecipe = (props) => {
           classes={{ paper: classes.dialogDesktop }}
         >
           <DialogTitle>
-            <Grid container justify="flex-end">
-              <IconButton
-                edge="end"
-                color="inherit"
-                size="medium"
-                className={classes.dialogDesktopClose}
-                onClick={handleClose}
-              >
-                <Close fontSize="large" />
-              </IconButton>
+            <Grid container>
+              <Grid item xs={6}>
+                <Grid container justify="flex-start">
+                  <a
+                    href="/#"
+                    onClick={handleShareRecipe}
+                    className={classes.link}
+                  >
+                    <IconButton edge="start" color="inherit" size="medium">
+                      <Share fontSize="default" />
+                    </IconButton>
+                  </a>
+                </Grid>
+              </Grid>
+              <Grid item xs={6}>
+                <Grid container justify="flex-end">
+                  <IconButton
+                    edge="end"
+                    color="inherit"
+                    size="medium"
+                    className={classes.dialogDesktopClose}
+                    onClick={handleClose}
+                  >
+                    <Close fontSize="large" />
+                  </IconButton>
+                </Grid>
+              </Grid>
             </Grid>
           </DialogTitle>
           <DialogContent>
