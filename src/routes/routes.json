@@ -2,7 +2,7 @@
   "home": "/",
   "search": "/search",
   "categories": "/categories",
-  "shared": "/:id",
+  "shared": "/main/:id",
   "repo": "https://github.com/LOG1CRS/React-CookBook",
   "license": "https://github.com/LOG1CRS/React-CookBook/blob/master/LICENSE",
   "mainRoute": "https://log1c-react-cookbook.web.app/"

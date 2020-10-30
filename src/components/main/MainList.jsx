@@ -9,7 +9,7 @@ import {
 import useGetRandomRecipes from '../../hooks/useGetRandomRecipes';
 
 import CardSkeleton from '../../utils/LoadingSkeletons';
-import CardRecipe from '../../utils/Recipe/CardRecipe';
+import CardRecipe from '../Recipe/CardRecipe';
 import { mainId } from '../../utils/scrollRefs.json';
 
 const useStyle = makeStyles((theme) => ({

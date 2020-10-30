@@ -21,11 +21,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-swipeable-views": "^0.13.9",
+    "serve": "^11.3.2",
     "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start .env.local",
     "build": "react-scripts build",
+    "server": "serve ./build -s -p ${PORT:-8080}",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

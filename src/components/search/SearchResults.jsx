@@ -4,7 +4,7 @@ import ScrollToResults from '../../utils/ScrollToResults';
 import { searchId } from '../../utils/scrollRefs.json';
 import CardSkeleton from '../../utils/LoadingSkeletons';
 import useGetSearchedRecipe from '../../hooks/useGetSearchedRecipe';
-import CardRecipe from '../../utils/Recipe/CardRecipe';
+import CardRecipe from '../Recipe/CardRecipe';
 
 const useStyle = makeStyles((theme) => ({
   root: {

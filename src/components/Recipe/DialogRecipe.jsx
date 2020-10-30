@@ -110,7 +110,7 @@ const DialogRecipe = (props) => {
     e.preventDefault();
 
     if (!navigator.share) {
-      navigator.clipboard.writeText(`${mainRoute}${recipe.id}`);
+      navigator.clipboard.writeText(`${mainRoute}main/${recipe.id}`);
       alert('Recipe copy to clipboard!');
       return;
     }
@@ -118,7 +118,7 @@ const DialogRecipe = (props) => {
     navigator.share({
       title: `${recipe.title}`,
       text: `A friend has shared a recipe with you! by: React Cookbook`,
-      url: `${mainRoute}${recipe.id}`,
+      url: `${mainRoute}main/${recipe.id}`,
     });
   };
 
