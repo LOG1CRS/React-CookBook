@@ -1,6 +1,6 @@
 <h1> <img src="https://github.com/LOG1CRS/React-CookBook/blob/master/public/cookbook-icon.png" width="30px"> React Cookbook </h1>
 
-React Cookbook is a website that shows recipes from Spoonacular API, made with React, React-Router, Material-UI, and hosted with Firebase hosting. React cookbook is designed so that anyone can find a recipe quickly, supporting PWA to improve user experience on mobile.
+React Cookbook is a website that shows recipes from Spoonacular API, made with React, React-Router, Material-UI, and hosted with Firebase hosting. React cookbook is designed so that anyone can find a recipe quickly, supporting PWA to improve user experience on mobile. To see the project visit: https://log1c-react-cookbook.web.app/
 
 ## Project Media
 
