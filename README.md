@@ -1,11 +1,11 @@
-<h1> <img src="https://github.com/LOG1CRS/React-CookBook/blob/master/public/cookbook-icon.png" width="24px"> React Cookbook </h1>
+<h1> <img src="https://github.com/LOG1CRS/React-CookBook/blob/master/public/cookbook-icon.png" width="30px"> React Cookbook </h1>
 
 React Cookbook is a website that shows recipes from Spoonacular API, made with React, React-Router, Material-UI, and hosted with Firebase hosting. React cookbook is designed so that anyone can find a recipe quickly, supporting PWA to improve user experience on mobile.
 
-## Media
+## Project Media
 
-![](https://photos.app.goo.gl/dmnkG46z84bWS1MH7)
-![](https://photos.app.goo.gl/V9FVA73wp3qbrKmm8) ![](https://photos.app.goo.gl/uv9HFenNxmkYu7ap9)
+![](https://github.com/LOG1CRS/React-CookBook/blob/master/src/assets/static/home-example.jpg)
+![](https://github.com/LOG1CRS/React-CookBook/blob/master/src/assets/static/scroll-example.jpg) ![](https://github.com/LOG1CRS/React-CookBook/blob/master/src/assets/static/recipe-example.jpg)
 
 ## Getting Started
 
@@ -23,12 +23,12 @@ npm install
 ```
 #### 3. Get an API key at: [Spoonacular API](https://spoonacular.com/food-api)
 #### 4. Make a .env.local file in the root of the project. <br />
-#### 5.Enter your API key in .env.local file as REACT_APP_API_KEY = 'YOUR API KEY' 
+#### 5. Enter your API key in .env.local file as REACT_APP_API_KEY = 'YOUR API KEY' 
 
-## Scripts
+## Project Scripts
 
 ```sh
-### npm start
+npm start
 ```
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
